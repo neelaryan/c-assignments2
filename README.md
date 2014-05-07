@@ -21,9 +21,9 @@ ___
 
 (5). Convert a decimal number to its equivalent binary, Octal and Hexadecimal and vice-versa.
 
-(8). Write a program, which will ask to enter two set of integers. Then perform the following set operations
-   a. Intersection.
-   b. Union.
+(8). Write a program, which will ask to enter two set of integers. Then perform the following set operations<br>
+   a. Intersection.<br>
+   b. Union.<br>
    c. Minus.
    
 (11). Write a program to evaluate the range of data types in C language. Example: For Character the range is –127 to +128.
@@ -52,10 +52,10 @@ ___
 
 ###	String Based
 
-(42). Write a program to print a normal input string diagonally where each character in the output will be in uppercase form. Example: The string “Bat” will be printed as
-   B
-    A
-     T
+(42). Write a program to print a normal input string diagonally where each character in the output will be in uppercase form. Example: The string “Bat” will be printed as<br>
+...B<br>
+....A<br>
+.....T
 
 (45). Write a program to search a pattern from a text by K. M. P (Knuth-Moris-Pat) algorithm.
 
@@ -77,14 +77,14 @@ ___
 
 (68). Write a program to build a binary search tree having characters as the content of each node. Visit the created tree in preorder, inorder and postorder sequence. Display the output in suitable format.
 
-(72). Implements polynomials using linked list and perform the following operations using menu driven function:
-    a. Add two polynomials.
+(72). Implements polynomials using linked list and perform the following operations using menu driven function:<br>
+    a. Add two polynomials.<br>
     b. Multiply two polynomials.
 
 (75). Write a menu driven program in C to implement a circular queue using linked list incorporating the following items:
-    a. Adding elements to cqueue
-    b. Deleting from cqueue
-    c. Display the cqueue
+    a. Adding elements to cqueue<br>
+    b. Deleting from cqueue<br>
+    c. Display the cqueue<br>
     d. Quit
 
 (78). Implement the stack using menu driven program. Stack should be implement by linked structure.
@@ -99,20 +99,20 @@ ___
 
 ###	Application Based
 	
-(93). Write a program to generate the following pattern
-    1       1
-    1 2   2 1
-    1 2 3 2 1
-    1 2   2 1
-    1 	    1
+(93). Write a program to generate the following pattern<br>
+....1..........1<br>
+....1.2....2.1<br>
+....1.2.3.2.1<br>
+....1.2....2.1<br>
+....1..........1<br>
   (The highest number within the pattern will be given at the run time. Here this is 3)
 
 (96). Generate all possible integers by arranging three given integers from 1 to 100 and sort them in ascending order.
 
-(99). Write a program to implement a very small dictionary. (Use a text file for data)
-    Example: Input: Teacher
+(99). Write a program to implement a very small dictionary. (Use a text file for data)<br>
+    Example: Input: Teacher<br>
     Output: A person who teach something.
     
-(102). W.A.P. which converts numbers in the decimal system to Roman numerals with the following notations:
-     X = 10,    L = 50,    C = 100,     D = 500,    M = 1000
+(102). W.A.P. which converts numbers in the decimal system to Roman numerals with the following notations:<br>
+     X = 10,    L = 50,    C = 100,     D = 500,    M = 1000<br>
      XIV = 14,      CCXXI = 231,      MDXXI =1521
