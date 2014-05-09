@@ -7,6 +7,7 @@
 
 #include <conio.h>
 
+/* Otherwise define getch() and getche() */
 #else
 
 #include <termios.h>
