@@ -3,12 +3,11 @@
 #include <math.h>
 
 /* If we are compiling on Windows compile these functions and/or add these headers */
-#ifdef _WIN32
-
-#include <conio.h>
+#if defined(_WIN16) || defined(_WIN32) || defined (_WIN64)
+    #include <conio.h>
 
 /* Otherwise define getch() and getche() */
-#else
+#elif defined(__linux__)
 
 #include <termios.h>
 static struct termios old, new;
