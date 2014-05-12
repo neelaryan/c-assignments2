@@ -4,7 +4,12 @@
 
 /* If we are compiling on Windows compile these functions and/or add these headers */
 #if defined(_WIN16)
-    #include <conio.h>
+
+#include <conio.h>
+/* Clear the screen using this function when conio.h is not present */
+void clrscr() {
+    system("cls");
+}
 
 /* Otherwise define getch() and getche() */
 #elif defined(__linux__)
@@ -45,6 +50,11 @@ char getche(void) {
     return getch_(1);
 }
 
+/* Clear the screen */
+void clrscr() {
+    system("clear");
+}
+
 #endif
 
 int main()
@@ -68,6 +78,7 @@ int main()
     for( l = 1, l_prev = -1 ; l > l_prev ; l = l << 1)
 	l_prev = l ;
 
+	clrscr();
 	printf("\tData Type Ranges\n");
     printf("\nCharacter\t\t: %d\t\t to\t%d",c,abs(c+1));
     printf("\nUnsigned Character\t: %d\t\t to\t%d",c-c,abs(c*2+1));

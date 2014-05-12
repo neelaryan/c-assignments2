@@ -4,7 +4,12 @@
 
 /* If we are compiling on Windows compile these functions and/or add these headers */
 #if defined(_WIN16)
-    #include <conio.h>
+
+#include <conio.h>
+/* Clear the screen using this function when conio.h is not present */
+void clrscr() {
+    system("cls");
+}
 
 /* Otherwise define getch() and getche() */
 #elif defined(__linux__)
@@ -43,6 +48,11 @@ char getch(void) {
 /* Read 1 character with echo */
 char getche(void) {
     return getch_(1);
+}
+
+/* Clear the screen */
+void clrscr() {
+    system("clear");
 }
 
 #endif
@@ -237,10 +247,11 @@ int octal_decimal(int n)
 
 int main() {
 	int decimal,oct;
-	unsigned int choice;
-	char bin[100],hex[20],ch;
+	unsigned int choice,ch;
+	char bin[100],hex[20];
 	do {
-        printf(" Input Type ? \n1. Decimal\n2. Binary\n3. Octal\n4. Hexadecimal\n Choice: ");
+        clrscr();
+        printf(" Input Type ? \n1. Decimal\n2. Binary\n3. Octal\n4. Hexadecimal\n5. Exit\n Choice: ");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -271,13 +282,14 @@ int main() {
                     printf("\nDecimal\t\t= %d", hex_decimal(hex));
                     printf("\nOctal\t\t= %o", hex_decimal(hex));
                     break;
+            case 5: printf("Press any key to exit...");
+                    getch();
+                    return 0;
             default:printf("Wrong Input !");
-                    ch='y';
-                    continue;
+                    ch=1;
         }
-        printf("\nConvert Again ? (y/n)");
-        ch=getche();
-        //scanf("%c", &ch);
-    }while((ch=='y') || (ch=='Y'));
+        printf("\nConvert Again ? (yes-1 / no-0)");
+        scanf("%d", &ch);
+    }while(ch==1);
 	return 0;
 }

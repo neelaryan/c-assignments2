@@ -152,7 +152,6 @@ int find_difference(int *array1, int *array2, int *diff, int SIZE1, int SIZE2)
 int main()
 {
     int *setA, *setB, *intersection, *_union, num_elements, *AminusB, *BminusA, SIZE1, SIZE2;
-    printf("g");
     clrscr();
 
     printf("Enter size the size for set A : ");
