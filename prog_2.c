@@ -6,7 +6,7 @@
 
 #include<stdio.h>
 /* If we are compiling on Windows compile these functions and/or add these headers */
-#if defined(_WIN16) || defined(_WIN32) || defined (_WIN64)
+#if defined(_WIN16)
     #include <conio.h>
 
 /* Otherwise define getch() and getche() */

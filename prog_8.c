@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 /* If we are compiling on Windows compile these functions and/or add these headers */
-#if defined(_WIN16) || defined(_WIN32) || defined (_WIN64)
-    #include <conio.h>
+#if defined(_WIN16)
+
+#include <conio.h>
+/* Clear the screen using this function when conio.h is not present */
+void clrscr() {
+    system("cls");
+}
 
 /* Otherwise define getch() and getche() */
 #elif defined(__linux__)
@@ -43,18 +48,20 @@ char getche(void) {
     return getch_(1);
 }
 
+/* Clear the screen */
 void clrscr() {
     system("clear");
 }
+
 #endif
 
 void get_value(int *arr,int SIZE)
 {
     int i, j;
     for (i = 0; i < SIZE; i++) {
-        j = i + 1;
-        printf("\n Enter element %d: ", j);
-        scanf("%d", &arr[i]);
+	j = i + 1;
+	printf("\n Enter element %d: ", j);
+	scanf("%d", &arr[i]);
     }
 }
 
@@ -62,12 +69,12 @@ void print_value(int *arr, int n)
 {
     int i;
     if(n == 0) {
-        printf("NULL");
-        return;
+	printf("NULL");
+	return;
     }
     printf("{ ");
     for (i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
+	printf("%d ", arr[i]);
     }
     printf("}");
 }
@@ -77,18 +84,18 @@ void function_sort(int *arr, int SIZE)
     int i, j, temp, swapping;
 
     for (i = 1; i < SIZE; i++) {
-        swapping = 0;
-        for (j = 0; j < SIZE-i; j++) {
-            if (arr[j] > arr[j+1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-                swapping = 1;
-            }
-        }
-        if (swapping == 0) {
-            break;
-        }
+	swapping = 0;
+	for (j = 0; j < SIZE-i; j++) {
+	    if (arr[j] > arr[j+1]) {
+		temp = arr[j];
+		arr[j] = arr[j + 1];
+		arr[j + 1] = temp;
+		swapping = 1;
+	    }
+	}
+	if (swapping == 0) {
+	    break;
+	}
     }
 }
 
@@ -132,7 +139,7 @@ int find_difference(int *array1, int *array2, int *diff, int SIZE1, int SIZE2)
     int i, j, k=0;
     for(i = 0; i < SIZE1; i++) {
         int flag=0;
-        for(j = 0; j < SIZE2; j++) {
+	for(j = 0; j < SIZE2; j++) {
             if(array2[j] == array1[i])
                 flag=1;
         }
