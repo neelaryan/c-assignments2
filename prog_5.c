@@ -66,7 +66,7 @@ char* toBinary(int decimal) {
 	int k = 0, n = 0;
 	int negative = 0;
 	int remain;
-	char temp[strlen(binary)];
+	char temp[strlen(binary)];	// 69:Constant Expression Required.
 
 	// take care of negative input
 	if (decimal < 0) {
@@ -142,7 +142,7 @@ int validBinaryString(char* s)
 /**
  * Reverse string
  */
-void strrev(char str[]){
+void strrev(char str[]){	// 145:Type mismatch on redeclaration on 'strrev'.
     int i,j;
     char temp[100];
     for(i=strlen(str)-1,j=0; i+1!=0; --i,++j)
