@@ -6,7 +6,7 @@
 /* Clear the screen using this function when conio.h is not present */
 void clrscr()
 {
-    system("cls");
+    printf("\x1B[2J\x1B[0;0f");
 }
 
 /* Otherwise define getch() and getche() */
@@ -56,7 +56,7 @@ char getche(void)
 /* Clear the screen */
 void clrscr()
 {
-    system("clear");
+    printf("\x1B[2J\x1B[0;0f");
 }
 
 #endif
@@ -82,8 +82,7 @@ int main()
     if (order == 2) {
         output = (mat[0][0] * mat[1][1]) -
                  (mat[0][1] * mat[1][0]);
-    }
-    else if (order == 3) {
+    } else if (order == 3) {
         output = (mat[0][0] * mat[1][1] * mat[2][2]) -
                  (mat[0][0] * mat[2][1] * mat[1][2]) -
                  (mat[0][1] * mat[1][0] * mat[2][2]) +

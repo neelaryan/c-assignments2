@@ -8,7 +8,7 @@
 #include <conio.h>
 /* Clear the screen using this function when conio.h is not present */
 void clrscr() {
-    system("cls");
+    printf("\x1B[2J\x1B[0;0f");
 }
 
 /* Otherwise define getch() and getche() */
@@ -52,7 +52,7 @@ char getche(void) {
 
 /* Clear the screen */
 void clrscr() {
-    system("clear");
+    printf("\x1B[2J\x1B[0;0f");
 }
 
 #endif
