@@ -63,20 +63,14 @@ int main()
     short s, s_prev ;
     int i, i_prev ;
     long l, l_prev ;
-    float f, f_prev;
-    double d, d_prev;
 
-    for( c = 1, c_prev = -1; c > c_prev ; c = c << 1)
-	c_prev = c ;
+    for( c = 1, c_prev = -1; c > c_prev ; c = c << 1);
 
-    for( s = 1, s_prev = -1 ; s > s_prev ; s = s << 1)
-	s_prev = s ;
+    for( s = 1, s_prev = -1 ; s > s_prev ; s = s << 1);
 
-    for( i = 1, i_prev = -1 ; i > i_prev ; i = i << 1)
-	i_prev = i ;
+    for( i = 1, i_prev = -1 ; i > i_prev ; i = i << 1);
 
-    for( l = 1, l_prev = -1 ; l > l_prev ; l = l << 1)
-	l_prev = l ;
+    for( l = 1, l_prev = -1 ; l > l_prev ; l = l << 1);
 
 	clrscr();
 	printf("\tData Type Ranges\n");
@@ -86,7 +80,7 @@ int main()
     printf("\nUnsigned Short\t\t: %u\t\t to\t%u",s-s,(abs(s+1)*2)+1);
     printf("\nInteger\t\t\t: %d\t to\t%d",i,abs(i+1));
     printf("\nLong\t\t\t: %ld\t to\t%ld",l,abs(l+1));
-    printf("\nFloat\t\t\t: %f\n\t\t\t\tto\n\t\t\t  %f",FLT_MAX,FLT_MAX);
+    printf("\nFloat\t\t\t: %f\n\t\t\t\tto\n\t\t\t  %f",FLT_MIN,FLT_MAX);
     printf("\nDouble\t\t\t: %lf\n\t\t\t\tto\n\t\t\t  %lf",DBL_MIN,DBL_MAX);
     getch();
     return 0;
