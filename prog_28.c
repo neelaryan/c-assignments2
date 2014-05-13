@@ -63,36 +63,40 @@ void clrscr()
 
 int main()
 {
-    int order, output =  0, i, j, mat[3][3];
+    int m, n, p, q, i, j, k, sum = 0;
+    int matA[10][10], matB[10][10], matC[10][10];
     clrscr();
-    printf("Enter the order of the matrix(2/3): ");
-    scanf("%d", &order);
-    if (order < 2 || order > 3) {
-        printf("\nWrong input!!");
-        getch();
-        return 0;
-    }
-
-    printf("Enter your matrix input:\n");
-    for (i = 0; i < order; i++)
-        for (j = 0; j < order; j++) {
-            printf("Element #[%d][%d] : ", i,j);
-            scanf("%d",&mat[i][j]);
+    printf("Enter the number of rows and columns of Matrix A : \n");
+    scanf("%d%d", &m, &n);
+    printf("Enter the elements of Matrix A : \n");
+    for (i = 0; i < m; i++)
+        for (j = 0; j < n; j++)
+            scanf("%d", &matA[i][j]);
+    printf("Enter the number of rows and columns of Matrix B : \n");
+    scanf("%d%d", &p, &q);
+    if (n != p)
+        printf("Matrices with entered orders can't be multiplied with each other.\n");
+    else {
+        printf("Enter the elements of Matrix B : \n");
+        for (i = 0; i < p; i++)
+            for (j = 0; j < q; j++)
+                scanf("%d", &matB[i][j]);
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < q; j++) {
+                for (k = 0; k < p; k++) {
+                    sum = sum + matA[i][k]*matB[k][j];
+                }
+                matC[i][j] = sum;
+                sum = 0;
+            }
         }
-
-    if (order == 2) {
-        output = (mat[0][0] * mat[1][1]) -
-                 (mat[0][1] * mat[1][0]);
-    } else if (order == 3) {
-        output = (mat[0][0] * mat[1][1] * mat[2][2]) -
-                 (mat[0][0] * mat[2][1] * mat[1][2]) -
-                 (mat[0][1] * mat[1][0] * mat[2][2]) +
-                 (mat[0][1] * mat[2][0] * mat[1][2]) +
-                 (mat[0][2] * mat[1][0] * mat[2][1]) -
-                 (mat[0][2] * mat[1][1] * mat[2][0]);
+        printf("\nProduct : \n\n");
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < q; j++)
+                printf("%d\t", matC[i][j]);
+            printf("\n");
+        }
     }
-
-    printf("Determinant for the given matrix: %d\n", output);
     getch();
     return 0;
 }
