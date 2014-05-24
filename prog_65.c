@@ -69,69 +69,62 @@ void _swap(int* a, int* b)
     *a = *a - *b;
 }
 
-int _partition(int *arr, int beg, int last)
+int quickSort(int *a, int left, int right)
 {
-    int x=arr[last], i=(beg-1), j;
-    for(j = beg; j <= last-1; j++)
-    {
-        if (arr[j] <= x)
-        {
-            i++;
-            _swap(&arr[i], &arr[j]);
+    int pos = left;
+    do{
+        while((a[pos]<=a[right]) && (pos != right))
+            right = right-1;
+        if(pos == right)
+            return pos;
+        else {
+            _swap(&a[pos],&a[right]);
+            pos = right;
         }
-    }
-    _swap(&arr[i+1], &arr[last]);
-    return (i+1);
+        while((a[pos]>=a[left]) && (pos != left))
+            left = left+1;
+        if(pos == left)
+            return pos;
+        else {
+            _swap(&a[pos],&a[left]);
+            pos = left;
+        }
+    }while(left <= right);
 }
 
-void quickSort(int *arr, int beg, int last)
+void quick(int *arr, int beg, int last)
 {
-    // Create an auxiliary stack
-    int _stack[last-beg+1],top=-1,p;
-    // push initial values of l and h to stack
-    _stack[++top] = beg;
-    _stack[++top] = last;
-    while(top >= 0)
-    {
-        last = _stack[top--];
-        beg = _stack[top--];
-        p = _partition(arr, beg, last);
-        // If there are elements on left side of pivot, then push leftside to stack
-        if(p-1 > beg)
-        {
-            _stack[++top] = beg;
-            _stack[++top] = p-1;
-        }
-        // If there are elements on right side of pivot, then push rightside to stack
-        if(p+1 < last)
-        {
-            _stack[++top] = p+1;
-            _stack[++top] = last;
-        }
-    }
+    int pos;
+    if(beg > last)
+        return;
+    pos = quickSort(arr,beg,last);
+    quick(arr,beg,pos-1);
+    quick(arr,pos+1,last);
 }
 
 int main()
 {
     clrscr();
     int *arr,n,i;
-    start:
+start:
     printf("Enter no. of elements : ");
     scanf("%d",&n);
-    if((n<=0)&&(n!=-1)) {
+    if((n<=0)&&(n!=-1))
+    {
         printf("Wrong Input ! No. of elements can't be 0. Enter -1 to exit.\n");
         goto start;
     }
-    else if(n==-1) {
+    else if(n==-1)
+    {
         printf("Press any key to exit...");
         getch();
         return 0;
     }
-    arr = malloc(n*sizeof(int));
+    arr = (int *)malloc(n*sizeof(int));
     printf("Enter %d elements :\n", n);
     for(i = 0; i < n; i++)
         scanf("%d", &arr[i]);
-    quickSort(arr,0,n-1);
+    quick(arr,0,n-1);
     printf("Sorted elements :\n");
     for(i = 0; i < n; i++)
         printf("%d\n", arr[i]);
