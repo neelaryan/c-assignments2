@@ -68,9 +68,9 @@ typedef enum
 
 void swap(long *x, long *y)
 {
-    *x=*x+*y;
-    *y=*x-*y;
-    *x=*x-*y;
+    *x = *x + *y;
+    *y = *x - *y;
+    *x = *x - *y;
 }
 
 int needSwap(int x, int y, order dir)
