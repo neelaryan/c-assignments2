@@ -90,6 +90,7 @@ int quickSort(int *a, int left, int right)
             pos = left;
         }
     }while(left <= right);
+    return pos;
 }
 
 void quick(int *arr, int beg, int last)
@@ -105,25 +106,26 @@ void quick(int *arr, int beg, int last)
 int main()
 {
     clrscr();
-    int *arr,n,i;
-start:
+    int *arr,n,i,reads;
+    char a;
     printf("Enter no. of elements : ");
-    scanf("%d",&n);
-    if((n<=0)&&(n!=-1))
-    {
-        printf("Wrong Input ! No. of elements can't be 0. Enter -1 to exit.\n");
-        goto start;
-    }
-    else if(n==-1)
-    {
-        printf("Press any key to exit...");
-        getch();
-        return 0;
+    while(((reads = scanf("%d%c", &n, &a)) != 2 && reads != EOF) || a != '\n') {
+        printf("Please enter an integer only !\nEnter no. of elements : ");
+        do {
+            reads = scanf("%c", &a);
+        }while(reads != EOF && a != '\n');
     }
     arr = (int *)malloc(n*sizeof(int));
     printf("Enter %d elements :\n", n);
-    for(i = 0; i < n; i++)
-        scanf("%d", &arr[i]);
+    for(i = 0; i < n; i++) {
+        printf("Enter element #%d : ",i+1);
+        while(((reads = scanf("%d%c", &arr[i], &a)) != 2 && reads != EOF) || a != '\n') {
+            printf("Please enter an integer only !\nEnter element #%d : ",i+1);
+            do {
+                reads = scanf("%c", &a);
+            }while(reads != EOF && a != '\n');
+        }
+    }
     quick(arr,0,n-1);
     printf("Sorted elements :\n");
     for(i = 0; i < n; i++)
