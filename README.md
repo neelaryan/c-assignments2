@@ -77,7 +77,7 @@ ___
 
 (68). Write a program to build a binary search tree having characters as the content of each node. Visit the created tree in preorder, inorder and postorder sequence. Display the output in suitable format.
 
-(72).* Implements polynomials using linked list and perform the following operations using menu driven function:<br>
+(72). Implements polynomials using linked list and perform the following operations using menu driven function:<br>
     a. Add two polynomials.<br>
     b. Multiply two polynomials.
 
