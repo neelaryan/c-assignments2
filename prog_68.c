@@ -82,25 +82,34 @@ tree_t *getnode(char x)
 
 tree_t *createBST()
 {
-    tree_t *root, *p, *ptr;
+    tree_t *root=NULL, *p, *ptr;
     char a;
-    int flag=-1,s,reads;
-    printf("Enter root element (0 to stop) : ");
-    while(((reads = scanf("%d%c", &s, &a)) != 2 && reads != EOF) || (a != '\n') || !isalpha(s)) {
-        printf("Please enter a character only !\nEnter root element (0 to stop) : ");
-        do {
-            reads = scanf("%d%c", &s,&a);
-        }while((reads != EOF || a != '\n') || !isalpha(s));
-    }
-    root = getnode(s);
+    int flag=-1;
+    do
+    {
+        flag++;
+        if(flag)
+            printf("\nPlease enter a character only !\nEnter root element (0 to stop) : ");
+        else
+            printf("\nEnter root element (0 to stop) : ");
+        a = getche();
+        if(a == '0')
+            return root;
+    }while(!isalpha(a));
+    root = getnode(a);
     flag=-1;
-    printf("Enter another element (0 to stop) : ");
-    while(((reads = scanf("%d%c", &s, &a)) != 2 && reads != EOF) || a != '\n') {
-        printf("Please enter a character only !\nEnter root element (0 to stop) : ");
-        do {
-            reads = scanf("%c", &a);
-        }while(reads != EOF && a != '0');
+    do
+    {
+        flag++;
+        if(flag)
+            printf("\nPlease enter a character only !\nEnter another element (0 to stop) : ");
+        else
+            printf("\nEnter another element (0 to stop) : ");
+        a = getche();
+        if(a == '0')
+            return root;
     }
+    while(!isalpha(a));
     do
     {
         ptr = root;
@@ -108,29 +117,30 @@ tree_t *createBST()
         while(p != NULL)
         {
             ptr = p;
-            if(s < p->data)
+            if(a < p->data)
                 p = p->left;
             else
                 p = p->right;
         }
-        if(s < ptr->data)
-            ptr->left = getnode(s);
+        if(a < ptr->data)
+            ptr->left = getnode(a);
         else
-            ptr->right = getnode(s);
+            ptr->right = getnode(a);
         flag=-1;
         do
         {
             flag++;
             if(flag)
-                printf("Please enter an character only !\nEnter an element (0 to stop) : ");
+                printf("\nPlease enter an character only !\nEnter an element (0 to stop) : ");
             else
-                printf("Enter an element (0 to stop) : ");
-            s = getchar();
-            getchar();
-            if(s == '0')
+                printf("\nEnter an element (0 to stop) : ");
+            a = getche();
+            if(a == '0')
                 return root;
-        }while(!isalpha(s));
-    }while(s != '0');
+        }
+        while(!isalpha(a));
+    }
+    while(a != '0');
     return root;
 }
 
