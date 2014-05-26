@@ -218,6 +218,7 @@ int main()
 {
     clrscr();
     struct node *start1=NULL,*start2=NULL;
+    int ch;
 
     printf("Enter polynomial 1 :\n");
     start1=create(start1);
@@ -230,8 +231,22 @@ int main()
     printf("\nPolynomial 2 is :  ");
     display(start2);
 
-    poly_add(start1, start2);
-    poly_mult(start1, start2);
+    do{
+    printf("\n\n\tMenu :\n1.Add the two polynomials\n2.Multiply the two polynomials\n3.Exit\nChoice : ");
+    scanf("%d",&ch);
+
+    if(ch==1)
+        poly_add(start1, start2);
+    else if(ch==2)
+        poly_mult(start1, start2);
+    else if(ch==3) {
+        printf("Press any key to exit...");
+        getch();
+        exit(0);
+    }
+    else
+        printf("Input Error.");
+    }while((ch!=1) && (ch!=2));
     getch();
     return 0;
 }
