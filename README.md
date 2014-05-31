@@ -89,7 +89,7 @@ ___
 
 (78). Implement the stack using menu driven program. Stack should be implement by linked structure.
 
-(81).* Write a program to perform Insertion, Deletion in to a Binary Search Tree.
+(81). Write a program to perform Insertion, Deletion in to a Binary Search Tree.
 
 ###	Data File Based
 	
