@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
 /* If we are compiling on Windows compile these functions and/or add these headers */
 #if defined(_WIN16)
 
@@ -62,62 +63,37 @@ void clrscr()
 
 #endif
 
-int LCM(int x,int y)
+void swap_char(int a[], int pos1, int pos2)
 {
-    int hcf=1,lcm=x*y,max,i;
-
-    max=(x>y)?x:y;
-    for(i=2; i<max/2;)
-    {
-        if(x%i==0 && y%i==0)
-        {
-            hcf=hcf*i;
-            x=x/i;
-            y=y/i;
-        }
-        else i++;
-    }
-    lcm=lcm/hcf;
-    return(lcm);
+    int x;
+    x=a[pos1];
+    a[pos1]=a[pos2];
+	a[pos2]=x;
 }
 
-int HCF(int x,int y)
+void permute(int a[],int beg,int _end)
 {
-    int hcf=1,max,i;
-    max=(x>y)?x:y;
-    for(i=2; i<max/2;)
-    {
-        if(x%i==0 && y%i==0)
-        {
-            hcf=hcf*i;
-            x=x/i;
-            y=y/i;
-        }
-        else i++;
-    }
-    return(hcf);
+	int i;
+	if(beg==_end)
+	{
+		printf("\n%d",a[beg]);
+		return;
+	}
+	for(i=beg;i<=_end;i++)
+	{
+	 	swap_char(a,beg,i);
+	 	permute(a,beg+1,_end);
+	  	swap_char(a,beg,i);
+	}
 }
 
 int main()
 {
-    int a[20],n,i,x,y;
-    clrscr();
-    printf("How many elements do you want to enter(<=20) ? ");
-    scanf("%d",&n);
-    printf("Enter the elements: ");
-
-    for(i=0; i<n; i++)
-        scanf("%d",&a[i]);
-
-    x=HCF(a[0],a[1]);
-    for(i=2; i<n; i++)
-        x=HCF(x,a[i]);
-
-    y=LCM(a[0],a[1]);
-    for(i=2; i<n; i++)
-        y=LCM(y,a[i]);
-
-    printf("The HCF is : %d\nThe LCM is : %d",x,y);
-    getch();
-    return 0;
+	int a[3],n;
+	clrscr();
+	printf("Enter the 3 ints : ");
+	n=scanf("%d%d%d", &a[0], &a[1], &a[2]);
+	permute(a,0,n);
+	getch();
+	return 0;
 }
